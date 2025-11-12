@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Wonder Forum</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Wonder Forum - Login</h1>
+  <nav style="margin-top: 10px;">
+  <a href="/">Home</a>
+  <% if (typeof user !== 'undefined' && user) { %>
+    | <a href="/dashboard">Dashboard</a>
+    | <a href="/logout">Logout</a>
+  <% } else { %>
+    | <a href="/login">Login</a>
+    | <a href="/register">Register</a>
+  <% } %>
+</nav>
+
+  </header>
+
+  <main style="margin-top: 50px; text-align: center;">
+    <form action="/login" method="POST" style="display: inline-block; text-align: left;">
+      
+      <!-- Display errors if any -->
+      <% if (errors && errors.length > 0) { %>
+        <div class="errors" style="color: red; margin-bottom: 10px;">
+          <% errors.forEach(error => { %>
+            <p><%= error %></p>
+          <% }); %>
+        </div>
+      <% } %>
+
+      <fieldset>
+        <legend>Log into your account</legend>
+
+        <label for="username">Username</label><br>
+        <input type="text" id="username" name="username" autocomplete="off" required>
+        <br><br>
+
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password" autocomplete="off" required>
+        <br><br>
+
+        <button type="submit">Log In</button>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer style="text-align: center; margin-top: 50px;">
+    &copy; <%= new Date().getFullYear() %> Wonder Forum
+  </footer>
+</body>
+</html>

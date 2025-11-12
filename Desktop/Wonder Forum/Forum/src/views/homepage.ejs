@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wonder Forum</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <center>
+        <a href="/">WONDER FORUM</a>
+      </center>
+    </nav>
+    <hr>
+    <nav style="text-align: center; margin-top: 10px;">
+  <header>
+  <h1>Wonder Forum</h1>
+  <% if (typeof user !== 'undefined' && user) { %>
+    <p>Welcome, <%= user.username %> | <a href="/logout">Logout</a></p>
+  <% } else { %>
+    <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+  <% } %>
+</header>
+
+
+
+  <main style="text-align: center; margin-top: 50px;">
+    <h2>Welcome to Wonder Forum!</h2>
+    <p>Connect, share ideas, and explore topics in your favorite categories.</p>
+  </main>
+
+  <footer style="text-align: center; margin-top: 50px;">
+    &copy; <%= new Date().getFullYear() %> Wonder Forum
+  </footer>
+</body>
+</html>

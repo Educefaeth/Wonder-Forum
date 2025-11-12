@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wonder Forum</title>
+  <link rel="stylesheet" href="/style.css">
+
+<h2>Create Post</h2>
+
+<% if (errors && errors.length > 0) { %>
+  <div style="color:red;">
+    <% errors.forEach(e => { %>
+      <p><%= e %></p>
+    <% }) %>
+  </div>
+<% } %>
+
+<form action="/create-post" method="POST">
+  <input type="text" name="title" placeholder="Post Title" required />
+  <textarea name="content" placeholder="Post content" required></textarea>
+  <select name="category" required>
+    <option value="technology" <%= category === "technology" ? "selected" : "" %>>Technology</option>
+    <option value="sports" <%= category === "sports" ? "selected" : "" %>>Sports</option>
+    <option value="music" <%= category === "music" ? "selected" : "" %>>Music</option>
+    <option value="fashion" <%= category === "fashion" ? "selected" : "" %>>Fashion</option>
+    <option value="politics" <%= category === "politics" ? "selected" : "" %>>Politics</option>
+  </select>
+  <button type="submit">Post</button>
+</form>

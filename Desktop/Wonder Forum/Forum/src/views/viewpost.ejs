@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= post.title %></title>
+</head>
+<body>
+  <header>
+    <a href="/posts">← Back to Posts</a>
+  </header>
+
+  <article>
+    <h1><%= post.title %></h1>
+    <p><%= post.content %></p>
+
+    <% if (post.file) { %>
+      <p><a href="/uploads/<%= post.file %>" target="_blank">View Attachment</a></p>
+    <% } %>
+
+    <small>Posted by: <%= post.User.username %> on <%= new Date(post.createdAt).toLocaleString() %></small>
+  </article>
+
+  <footer>
+    <a href="/posts">Back to all posts</a>
+  </footer>
+</body>
+</html>

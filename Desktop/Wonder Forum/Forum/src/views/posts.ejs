@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forum Posts</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>All Posts</h1>
+
+  <% if (user) { %>
+    <p>Welcome, <%= user.username %>! | <a href="/logout">Logout</a></p>
+    <a href="/posts/new">Create New Post</a>
+  <% } else { %>
+    <a href="/login">Login</a> or <a href="/register">Register</a>
+  <% } %>
+
+  <hr />
+
+  <% if (posts.length > 0) { %>
+    <% posts.forEach(post => { %>
+      <div style="margin-bottom: 20px;">
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
+        <p><small>By <%= post.User.username %> on <%= post.createdAt.toDateString() %></small></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No posts yet. <a href="/posts/new">Create one!</a></p>
+  <% } %>
+</body>
+</html>
